@@ -1,0 +1,5 @@
+#! /usr/bin/env bash
+
+# Wallpaper
+swww init &
+swww .background-image.jpg
