@@ -4,10 +4,10 @@ alias la='ls -A'
 alias l='ls -CF'
 
 alias gp='cd financeapp/ && nvim'
-alias ga='cd ~/.config/bash && nvim aliases'
-alias gnc='cd ~/.config/nvim && nvim init.lua'
-alias gbc='cd ~/.config/bash && nvim bashrc'
-alias gtc='nvim ~/.config/tmux/tmux.conf'
+alias ga='cd ~/dotfiles/bash && nvim aliases'
+alias gnc='cd ~/dotfiles/nvim && nvim init2.lua'
+alias gbc='cd ~/dotfiles/bash && nvim bashrc'
+alias gtc='nvim ~/dotfiles/tmux/tmux.conf'
 
 # Paths
 export PATH=${PATH}:~/dotfiles/bin

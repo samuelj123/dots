@@ -13,7 +13,8 @@ o.hlsearch = false -- Set highlight on search
 wo.relativenumber = true -- Make relative line numbers default
 wo.number = true -- Ensure that the number on the line shows up
 o.mouse = 'a' -- Enable mouse mode
-o.clipboard = 'unnamedplus' -- Sync clipboard between OS and Neovim.
+vim.api.nvim_set_option("clipboard","unnamed")
+
 o.breakindent = true -- Enable break indent
 o.undofile = true -- Save undo history
 o.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
@@ -386,6 +387,7 @@ require'lspconfig'.svelte.setup{} -- Svelte Language Server
 require'lspconfig'.svlangserver.setup{} -- Svelte Language Server
 require'lspconfig'.tsserver.setup {} -- Typescript Server
 require'lspconfig'.lua_ls.setup {} -- Lua Server
+require'lspconfig'.rust_analyzer.setup {} -- Rust Server
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
