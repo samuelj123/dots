@@ -5,6 +5,11 @@ in
 {
 	home.username = "sam";
 	home.homeDirectory = "/home/sam";
+	nix = {
+		package = packages.nix;
+		settings.experimental-features = ["nix-command" "flakes" ];
+
+	};
 # {{{1 Packages General
 	home.packages = with pkgs; [
 # core and Terminal
