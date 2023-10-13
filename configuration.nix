@@ -112,7 +112,6 @@ fonts.packages = with pkgs; [
 # {{{1 Home Manager Packages
 # {{{2 Packages General
   home-manager.users.sam = { pkgs, ... }: {
-# {{{2 Firefox
 # {{{2 Tmux
   programs.tmux.plugins = with pkgs; [
     tmuxPlugins.vim-tmux-navigator
@@ -149,64 +148,10 @@ fonts.packages = with pkgs; [
   };
   programs.home-manager.enable = true;
   home.stateVersion = "23.11"; # Did you read the comment?
-# # {{{2 Neovim
+
   # programs.neovim = {
     # enable = true;
     # defaultEditor = true;
-  # # {{{3 Neovim Plugins
-    # plugins = with pkgs.vimPlugins; [
-    # # {{{4 TPopes Plugins and other similar
-      # vim-fugitive vim-rhubarb vim-sleuth vim-surround
-      # vim-sensible vim-obsession vim-unimpaired
-      # comment-nvim vim-tmux-navigator
-    # # {{{4 LSP Stuff 
-      # nvim-lspconfig fidget-nvim neodev-nvim nvim-cmp 
-      # cmp-nvim-lsp luasnip cmp_luasnip
-    # # {{{4 Looking good
-      # catppuccin-nvim lualine-nvim
-    # # {{{4 Fuzzy Finder and Harpoon
-      # plenary-nvim telescope-nvim telescope-fzf-native-nvim telescope-file-browser-nvim
-      # harpoon
-    # # {{{4 Treesitter and its many parsers
-      # nvim-treesitter nvim-treesitter-textobjects nvim-treesitter-parsers.yaml 
-      # nvim-treesitter-parsers.yuck
-      # nvim-treesitter-parsers.typescript
-      # nvim-treesitter-parsers.tsx
-      # nvim-treesitter-parsers.toml
-      # nvim-treesitter-parsers.svelte
-      # nvim-treesitter-parsers.scss
-      # nvim-treesitter-parsers.rust
-      # nvim-treesitter-parsers.python
-      # nvim-treesitter-parsers.nix
-      # nvim-treesitter-parsers.markdown
-      # nvim-treesitter-parsers.lua
-      # nvim-treesitter-parsers.ledger
-      # nvim-treesitter-parsers.javascript
-      # nvim-treesitter-parsers.html
-      # nvim-treesitter-parsers.html
-      # nvim-treesitter-parsers.css
-      # nvim-treesitter-parsers.norg
-      # ];
-    # extraConfig = ''
-    # '';
-# };
-# # {{{2 Bash
-  # programs.bash = {
-    # enable = true;
-    # bashrcExtra = ''
-      # . ~/dotfiles/bash/bashrc
-      # '';
-  # };
-# {{{2 Git
-  # programs.git = {
-    # enable = true;
-    # userName = "samuelj123";
-    # userEmail = "samuelj123@gmail.com";
-    # extraConfig = {
-      # color = { ui = true; };
-      # init = { defaultBranch = "master"; };
-    # };
-  # };
 # {{{2 Other config files
   home.file = {
     "/home/sam/.config/alacritty/alacritty.yml".source = /home/sam/dotfiles/alacritty/alacritty.yml;
@@ -216,19 +161,6 @@ fonts.packages = with pkgs; [
 
 home-manager.useUserPackages = true;
 home-manager.useGlobalPkgs = true;
-
-# {{{1 Unknown
-# List packages installed in system profile. To search, run:
-# $ nix search wget
-
-# Some programs need SUID wrappers, can be configured further or are
-# started in user sessions.
-# programs.mtr.enable = true;
-# programs.gnupg.agent = {
-#   enable = true;
-#   enableSSHSupport = true;
-# };
-
 
 # {{{1 Saving a backup @ (/run/current-system/configuration.nix)
   system.copySystemConfiguration = true;

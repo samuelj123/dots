@@ -6,9 +6,8 @@ in
 	home.username = "sam";
 	home.homeDirectory = "/home/sam";
 	nix = {
-		package = packages.nix;
+		package = pkgs.nix;
 		settings.experimental-features = ["nix-command" "flakes" ];
-
 	};
 # {{{1 Packages General
 	home.packages = with pkgs; [
@@ -65,21 +64,21 @@ in
 	programs.neovim = {
 		enable = true;
 		defaultEditor = true;
-# {{{3 Neovim Plugins
+# {{{2 Neovim Plugins
 	plugins = with pkgs.vimPlugins; [
-# {{{4 TPopes Plugins and other similar
+# {{{3 TPopes Plugins and other similar
 	vim-fugitive vim-rhubarb vim-sleuth vim-surround
 		vim-sensible vim-obsession vim-unimpaired
 		comment-nvim vim-tmux-navigator
-# {{{4 LSP Stuff 
+# {{{3 LSP Stuff 
 	nvim-lspconfig fidget-nvim neodev-nvim nvim-cmp 
 		cmp-nvim-lsp luasnip cmp_luasnip
-# {{{4 Looking good
+# {{{3 Looking good
 	catppuccin-nvim lualine-nvim
-# {{{4 Fuzzy Finder and Harpoon
+# {{{3 Fuzzy Finder and Harpoon
 	plenary-nvim telescope-nvim telescope-fzf-native-nvim telescope-file-browser-nvim
 		harpoon
-# {{{4 Treesitter and its many parsers
+# {{{3 Treesitter and its many parsers
 	nvim-treesitter nvim-treesitter-textobjects nvim-treesitter-parsers.yaml 
 		nvim-treesitter-parsers.yuck
 		nvim-treesitter-parsers.typescript
@@ -124,27 +123,7 @@ home.stateVersion = "22.11"; # Please read the comment before changing.
 		"/home/sam/.config/hypr/hyprland.conf".source = /home/sam/dotfiles/hyprland.conf;
 		"/home/sam/.config/nvim/init.lua".source = /home/sam/dotfiles/nvim/init2.lua;
 		"/home/sam/.config/nixpkgs/config.nix".source = /home/sam/dotfiles/nurinstall.nix;
-# # Building this configuration will create a copy of 'dotfiles/screenrc' in
-# # the Nix store. Activating the configuration will then make '~/.screenrc' a
-# # symlink to the Nix store copy.
-# ".screenrc".source = dotfiles/screenrc;
-
-# # You can also set the file content immediately.
-# ".gradle/gradle.properties".text = ''
-#   org.gradle.console=verbose
-#   org.gradle.daemon.idletimeout=3600000
-# '';
 	};
-
-# You can also manage environment variables but you will have to manually
-# source
-#
-#  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-#
-# or
-#
-#  /etc/profiles/per-user/sam/etc/profile.d/hm-session-vars.sh
-#
 # if you don't want to manage your shell through Home Manager.
 	home.sessionVariables = {
 		EDITOR = "nvim";
