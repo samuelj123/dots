@@ -7,7 +7,6 @@ in
 	home.homeDirectory = "/home/sam";
 	nix = {
 		package = pkgs.nix;
-		settings.experimental-features = ["nix-command" "flakes" ];
 	};
 # {{{1 Packages General
 	home.packages = with pkgs; [
@@ -52,7 +51,7 @@ in
 			sam = {
 				id = 0;
 				name = "sam";
-				extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+				extensions = with nurpkgs.repos.rycee.firefox-addons; [
 					ublock-origin
 						bitwarden
 						videospeed
