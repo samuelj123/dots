@@ -4,7 +4,7 @@
   imports =
     [ 
     /etc/nixos/hardware-configuration.nix
-      <home-manager/nixos> 
+      # <home-manager/nixos> 
     ];
 
 # {{{1 BootLoader
@@ -55,7 +55,7 @@ fonts.packages = with pkgs; [
     systemPackages = with pkgs; [
       vim 
       wget
-      home-manager
+      # home-manager
     ];
     variables = {
       EDITOR = "nvim";
@@ -110,61 +110,67 @@ fonts.packages = with pkgs; [
     };
   };
 # {{{1 Home Manager Packages
-# {{{2 Packages General
-  home-manager.users.sam = { pkgs, ... }: {
-# {{{2 Tmux
-  programs.tmux.plugins = with pkgs; [
-    tmuxPlugins.vim-tmux-navigator
-    tmuxPlugins.catppuccin
-  ];
-# {{{3 Tmux Config
-  programs.tmux = {
-    enable = true;
-    clock24 = true;
-    extraConfig = ''
-      unbind C-b
-      set -g prefix C-s
-
-# General Options
-      # set -g default-terminal "xterm-256color"
-      set -ag terminal-overrides ",alacritty:RBG,xterm-256color:RGB"
-      set-window-option -g mode-keys vi
-# set-option -g status-style bg=default,fg=white
-      set -g base-index 1
-      setw -g pane-base-index 1
-
-# StatusBar!
-      set -g status-position top
-      set -g @catppuccin_flavor "mocha"
-      set -g @catppuccin_status_modules "application date_time"
-      set -g @catppuccin_window_current_fill "number"
-      set -g @catppuccin_window_default_fill "number"
-      set -g @catppuccin_window_current_text "#W"
-      set -g @catppuccin_window_default_text "#W"
-
-# Keep this line at the end of the config
-      run '~/.config/tmux/plugins/tpm/tpm'
-      '';
-  };
-  programs.home-manager.enable = true;
-  home.stateVersion = "23.11"; # Did you read the comment?
+# Packages General
+#   home-manager.users.sam = { pkgs, ... }: {
+# # Tmux
+#   programs.tmux.plugins = with pkgs; [
+#     tmuxPlugins.vim-tmux-navigator
+#     tmuxPlugins.catppuccin
+#   ];
+# # Tmux Config
+#   programs.tmux = {
+#     enable = true;
+#     clock24 = true;
+#     extraConfig = ''
+#       unbind C-b
+#       set -g prefix C-s
+#
+# # General Options
+#       # set -g default-terminal "xterm-256color"
+#       set -ag terminal-overrides ",alacritty:RBG,xterm-256color:RGB"
+#       set-window-option -g mode-keys vi
+# # set-option -g status-style bg=default,fg=white
+#       set -g base-index 1
+#       setw -g pane-base-index 1
+#
+# # StatusBar!
+#       set -g status-position top
+#       set -g @catppuccin_flavor "mocha"
+#       set -g @catppuccin_status_modules "application date_time"
+#       set -g @catppuccin_window_current_fill "number"
+#       set -g @catppuccin_window_default_fill "number"
+#       set -g @catppuccin_window_current_text "#W"
+#       set -g @catppuccin_window_default_text "#W"
+#
+# # Keep this line at the end of the config
+#       run '~/.config/tmux/plugins/tpm/tpm'
+#       '';
+#   };
+  # programs.home-manager.enable = true;
+  # home.stateVersion = "23.11"; # Did you read the comment?
 
   # programs.neovim = {
     # enable = true;
     # defaultEditor = true;
-# {{{2 Other config files
-  home.file = {
-    "/home/sam/.config/alacritty/alacritty.yml".source = /home/sam/dotfiles/alacritty/alacritty.yml;
-    "/home/sam/.config/hypr/hyprland.conf".source = /home/sam/dotfiles/hyprland.conf;
-  };
-};
+# Other config files
+#   home.file = {
+#     "/home/sam/.config/alacritty/alacritty.yml".source = /home/sam/dotfiles/alacritty/alacritty.yml;
+#     "/home/sam/.config/hypr/hyprland.conf".source = /home/sam/dotfiles/hyprland.conf;
+#   };
+# };
 
-home-manager.useUserPackages = true;
-home-manager.useGlobalPkgs = true;
+# home-manager.useUserPackages = true;
+# home-manager.useGlobalPkgs = true;
 
 # {{{1 Saving a backup @ (/run/current-system/configuration.nix)
   system.copySystemConfiguration = true;
-
+# {{{ Activate Flakes
+nix = {
+  package = pkgs.nixFlakes;
+  extraOptions = ''
+    experimental-features = nix-command flakes
+  '';
+};
 # This value determines the NixOS release from which the default
 # settings for stateful data, like file locations and database versions
 # on your system were taken. It's perfectly fine and recommended to leave
