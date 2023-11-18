@@ -1,21 +1,26 @@
 { config, pkgs, lib, ... }:
 let
-nurpkgs = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {};
+allowUnfree = true;
+nurpkgs = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
+	inherit pkgs;
+};
 in
 {
 	home.username = "sam";
 	home.homeDirectory = "/home/sam";
 	nix = {
 		package = pkgs.nix;
+		settings.experimental-features = ["nix-command" "flakes" ];
 	};
 # {{{1 Packages General
 	home.packages = with pkgs; [
 # core and Terminal
-		alacritty dig feh fzf git gh mpv ranger ripgrep tree xfce.thunar unzip yt-dlp zathura
+		alacritty dig feh fzf git gh mpv ranger ripgrep tree xfce.thunar unzip xclip yt-dlp zathura
 # Wayland
 			eww-wayland rofi-wayland swww
 # Graphical programs
-			krita logseq
+			krita logseq davinci-resolve zoom
+
 # Development 
 			gcc nodejs nodePackages_latest.npm
 # Language servers
@@ -51,7 +56,7 @@ in
 			sam = {
 				id = 0;
 				name = "sam";
-				extensions = with nurpkgs.repos.rycee.firefox-addons; [
+				extensions = with pkgs.nur.repos.rycee.firefox-addons; [
 					ublock-origin
 						bitwarden
 						videospeed

@@ -8,6 +8,10 @@ alias ga='cd ~/dotfiles/bash && nvim aliases'
 alias gnc='cd ~/dotfiles/nvim && nvim init2.lua'
 alias gbc='cd ~/dotfiles/bash && nvim bashrc'
 alias gtc='nvim ~/dotfiles/tmux/tmux.conf'
+alias ggc='cd ~/dotfiles && nvim configuration.nix'
+alias ghc='cd ~/.config/home-manager && nvim home.nix'
+alias hs='home-manager switch'
+alias ta='echo "Testing Alias"'
 
 # Paths
 export PATH=${PATH}:~/dotfiles/bin

@@ -2,4 +2,5 @@
 
 # Wallpaper
 swww init &
-swww .background-image.jpg
+swww .background-image.jpg &
+waybar
