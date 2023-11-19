@@ -13,7 +13,8 @@ o.hlsearch = false -- Set highlight on search
 wo.relativenumber = true -- Make relative line numbers default
 wo.number = true -- Ensure that the number on the line shows up
 o.mouse = 'a' -- Enable mouse mode
-vim.api.nvim_set_option("clipboard","unnamed")
+-- vim.api.nvim_set_option("clipboard","unnamed")
+vim.opt.clipboard = "unnamedplus"
 
 o.breakindent = true -- Enable break indent
 o.undofile = true -- Save undo history
@@ -30,7 +31,6 @@ o.tabstop=2
 o.shiftwidth=2
 o.clipboard='unnamedplus'
 opt.showmode = false
-vim.api.nvim_set_option("clipboard","unnamed") --Use system clipboard. Why confusion?
 
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
