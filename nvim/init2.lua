@@ -68,13 +68,9 @@ local conditions = {
 -- Config
 local config = {
   options = {
-    -- Disable sections and component separators
     component_separators = '',
     section_separators = '',
     theme = {
-      -- We are going to use lualine_c an lualine_x as left and
-      -- right section. Both are highlighted by c theme .  So we
-      -- are just setting default looks o statusline
       normal = { c = { fg = colors.fg, bg = colors.bg } },
       inactive = { c = { fg = colors.fg, bg = colors.bg } },
     },
@@ -252,72 +248,9 @@ ins_right {
 require ('lualine').setup(config)
 -- {{{2 Comment Nvim
 require('Comment').setup();
-require('harpoon').setup {
-}
 
-vim.keymap.set('n', '<A-`>', ':lua require("harpoon.mark").add_file()<CR>', {silent = true})
-vim.keymap.set('n', '<A-0>', ':lua require("harpoon.ui").toggle_quick_menu()<CR>', {silent = true})
-vim.keymap.set('n', '<A-1>', ':lua require("harpoon.ui").nav_file(1)<CR>', {silent = true})
-vim.keymap.set('n', '<A-2>', ':lua require("harpoon.ui").nav_file(2)<CR>', {silent = true})
-vim.keymap.set('n', '<A-3>', ':lua require("harpoon.ui").nav_file(3)<CR>', {silent = true})
-vim.keymap.set('n', '<A-4>', ':lua require("harpoon.ui").nav_file(4)<CR>', {silent = true})
--- Enable telescope fzf native, if installed
-pcall(require('telescope').load_extension, 'fzf')
-
--- {{{2 Telescope Settings
-require('telescope').setup {
-  defaults = {
-    mappings = {
-      i = {
-        ['<C-u>'] = false,
-        ['<C-d>'] = false,
-      },
-    },
-  },
-  extensions = {
-    file_browser = {
-      theme = "catppuccin",
-      -- disables netrw and use telescope-file-browser in its place
-      hijack_netrw = true,
-      mappings = {
-        ["i"] = {
-          -- your custom insert mode mappings
-        },
-        ["n"] = {
-          -- your custom normal mode mappings
-        },
-      },
-    },
-  },
-}
-require("telescope").load_extension "file_browser"
--- {{{2 Telescope Keymaps See `:help telescope.builtin`
-vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
-vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
-vim.keymap.set('n', '<leader>/', function()
-  -- You can pass additional configuration to telescope to change theme, layout, etc.
-  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-    winblend = 10,
-    previewer = false,
-  })
-end, { desc = '[/] Fuzzily search in current buffer' })
-local utils = require('telescope.utils')
-local builtin = require('telescope.builtin')
-_G.project_files = function()
-  local _, ret, _ = utils.get_os_command_output({ 'git', 'rev-parse', '--is-inside-work-tree' })
-  if ret == 0 then
-    builtin.git_files()
-  else
-    builtin.find_files()
-  end
-end
-vim.api.nvim_set_keymap('n', '<leader>sf', '<cmd>lua project_files()<CR>', {noremap=true})
--- vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
-vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
-vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
-vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
-vim.keymap.set('n', '<leader>sb', require "telescope".extensions.file_browser.file_browser, { desc = '[ ] Find existing buffers' })
+-- {{{2 FZF Keymaps
+vim.keymap.set('n', '<leader>f', '<cmd>lua require("fzf-lua").files()<CR>', { silent = true })
 -- {{{2 Treesitter Settings
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
