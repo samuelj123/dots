@@ -9,27 +9,27 @@ g.maplocalleader = ' '
 
 -- {{{1 [[ Setting options ]]
 
-o.hlsearch = false -- Set highlight on search
+o.hlsearch = false       -- Set highlight on search
 wo.relativenumber = true -- Make relative line numbers default
-wo.number = true -- Ensure that the number on the line shows up
-o.mouse = 'a' -- Enable mouse mode
+wo.number = true         -- Ensure that the number on the line shows up
+o.mouse = 'a'            -- Enable mouse mode
 -- vim.api.nvim_set_option("clipboard","unnamed")
 vim.opt.clipboard = "unnamedplus"
 
-o.breakindent = true -- Enable break indent
-o.undofile = true -- Save undo history
-o.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
+o.breakindent = true  -- Enable break indent
+o.undofile = true     -- Save undo history
+o.ignorecase = true   -- Case insensitive searching UNLESS /C or capital in search
 o.smartcase = true
 wo.signcolumn = 'yes' -- Keep signcolumn on by default
-o.updatetime = 250 -- Decrease update time
+o.updatetime = 250    -- Decrease update time
 o.timeout = true
 o.timeoutlen = 300
 o.completeopt = 'menuone,noselect' -- Set completeopt to have a better completion experience
-o.termguicolors = true -- NOTE: You should make sure your terminal supports this
-o.foldmethod = 'marker' -- put { { {<NO> for folding
-o.tabstop=2
-o.shiftwidth=2
-o.clipboard='unnamedplus'
+o.termguicolors = true             -- NOTE: You should make sure your terminal supports this
+o.foldmethod = 'marker'            -- put { { {<NO> for folding
+o.tabstop = 2
+o.shiftwidth = 2
+o.clipboard = 'unnamedplus'
 opt.showmode = false
 
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
@@ -37,11 +37,12 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-vim.keymap.set('n', '<leader>gnc', ':e ~/.config/nvim/init.lua<Return>', {silent = true, desc = "Nvim [c]onfig"})
-vim.keymap.set('n', '<leader>gtc', ':e ~/.config/tmux/tmux.conf<Return>', {silent = true, desc = "Nvim [c]onfig"})
-vim.keymap.set('n', '<leader>gp', ':cd /mnt/c/Users/esthe/DOCUMENTS/Sam/essentialhealth<Return>', {silent = true, desc = "Essential Health [P]roject"})
-vim.keymap.set('n', '<leader>E', ':Lex<Return>', {silent = true, desc = "[E]xplorer"})
-vim.keymap.set('n', '<leader>w', ':bd<Return>', {silent = true, desc = "[E]xplorer"})
+vim.keymap.set('n', '<leader>gnc', ':e ~/.config/nvim/init.lua<Return>', { silent = true, desc = "Nvim [c]onfig" })
+vim.keymap.set('n', '<leader>gtc', ':e ~/.config/tmux/tmux.conf<Return>', { silent = true, desc = "Nvim [c]onfig" })
+vim.keymap.set('n', '<leader>gp', ':cd /mnt/c/Users/esthe/DOCUMENTS/Sam/essentialhealth<Return>',
+  { silent = true, desc = "Essential Health [P]roject" })
+vim.keymap.set('n', '<leader>E', ':Lex<Return>', { silent = true, desc = "[E]xplorer" })
+vim.keymap.set('n', '<leader>w', ':bd<Return>', { silent = true, desc = "[E]xplorer" })
 -- {{{1 Plugin Options
 -- {{{2 LspConfig, fidget
 require('fidget').setup({})
@@ -110,7 +111,7 @@ ins_left {
   function()
     return '▊'
   end,
-  color = { fg = colors.blue }, -- Sets highlighting of component
+  color = { fg = colors.blue },      -- Sets highlighting of component
   padding = { left = 0, right = 1 }, -- We don't need space before this
 }
 
@@ -206,7 +207,7 @@ ins_left {
 
 -- Add components to right sections
 ins_right {
-  'o:encoding', -- option component same as &encoding in viml
+  'o:encoding',       -- option component same as &encoding in viml
   fmt = string.upper, -- I'm not sure why it's upper case either ;)
   cond = conditions.hide_in_width,
   color = { fg = colors.green, gui = 'bold' },
@@ -245,12 +246,16 @@ ins_right {
   padding = { left = 1 },
 }
 -- Now don't forget to initialize lualine
-require ('lualine').setup(config)
+require('lualine').setup(config)
 -- {{{2 Comment Nvim
 require('Comment').setup();
 
 -- {{{2 FZF Keymaps
-vim.keymap.set('n', '<leader>f', '<cmd>lua require("fzf-lua").files()<CR>', { silent = true })
+vim.keymap.set('n', '\\f', '<cmd>lua require("fzf-lua").files()<CR>', { silent = true })
+---{{{2 Oil Settings
+require("oil").setup({
+  default_file_explorer = true;
+})
 -- {{{2 Treesitter Settings
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
@@ -316,11 +321,11 @@ require('nvim-treesitter.configs').setup {
   },
 }
 -- {{{2 LSP Settings
-require'lspconfig'.svelte.setup{} -- Svelte Language Server
-require'lspconfig'.svlangserver.setup{} -- Svelte Language Server
-require'lspconfig'.tsserver.setup {} -- Typescript Server
-require'lspconfig'.lua_ls.setup {} -- Lua Server
-require'lspconfig'.rust_analyzer.setup {} -- Rust Server
+require 'lspconfig'.svelte.setup {}        -- Svelte Language Server
+require 'lspconfig'.svlangserver.setup {}  -- Svelte Language Server
+require 'lspconfig'.tsserver.setup {}      -- Typescript Server
+require 'lspconfig'.lua_ls.setup {}        -- Lua Server
+require 'lspconfig'.rust_analyzer.setup {} -- Rust Server
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
@@ -359,7 +364,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 -- {{{2 Setup neovim lua configuration
 require('neodev').setup()
-
 -- {{{2 nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
@@ -414,6 +418,6 @@ cmp.setup {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
--- TPW4G_N4G6Z3 
+-- TPW4G_N4G6Z3
 -- pw 8747119618
--- 
+--

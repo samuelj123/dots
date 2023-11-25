@@ -30,6 +30,8 @@
   };
 
   services.openssh.enable = true; # Enable the OpenSSH daemon.
+  services.openssh.settings.GatewayPorts = "yes"; # Enable Ssh access from internet
+
 
 
 # {{{1 Timezone & Locale
