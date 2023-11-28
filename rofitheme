@@ -1,41 +1,51 @@
 configuration {
 modes: [combi];
-combi-modes: [window, drun, run];
+	 combi-modes: [window, drun, run];
 }
+
+prompt {
+	enabled: false;
+}
+
 * {
-	background-color: Black;
+	background-color: transparent;
 	text-color: White;
-	border-color: White;
-	font: "Times New Roman 12";
+	font: "FontAwesome 13px";
 }
 
 window {
-	anchor: north;
-	location: north;
-	width: 100%;
-	padding: 4px;
+	anchor: north west;
+	location: north west;
+	width: 60%;
+	padding: 10px;
 	children: [ horibox ];
+	y-offset: -30px;
 }
 
 horibox {
-orientation: horizontal;
-children: [ prompt, entry, listview ];
+	orientation: horizontal;
+	children: [ prompt, entry, listview ];
 }
 
 listview {
-layout: horizontal;
-spacing: 5px;
-lines: 10;
+	layout: horizontal;
+	spacing: 5px;
+	lines: 10;
 }
 
 entry {
-expand: false;
-width: 10em;
+	expand: false;
+	width: 10em;
 }
 
 element {
-padding: 0px 2px;
+	padding: 2px 8px;
+	margin-right: 20px;
+	background-color: #585b70;
+	border-radius: 15px;
 }
 element selected {
-	background-color: Red;
+	background-color: #74c7ec;
+	text-color: Black;
+	border-radius: 15px;
 }

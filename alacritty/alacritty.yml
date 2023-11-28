@@ -7,7 +7,7 @@ import:
 # set by alacritty itself.
 env:
   # TERM variable
-  TERM: alacritty
+  TERM: xterm-256color
 
 window:
   # Window dimensions (changes require restart)
