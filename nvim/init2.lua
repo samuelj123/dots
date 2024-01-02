@@ -4,8 +4,8 @@ local o = vim.o
 local opt = vim.opt
 local wo = vim.wo
 -- {{{1 Set <space> as the leader key
-g.mapleader = ' '
-g.maplocalleader = ' '
+g.mapleader = '\\'
+g.maplocalleader = '\\'
 
 -- {{{1 [[ Setting options ]]
 
@@ -252,6 +252,7 @@ require('Comment').setup();
 
 -- {{{2 FZF Keymaps
 vim.keymap.set('n', '\\f', '<cmd>lua require("fzf-lua").files()<CR>', { silent = true })
+vim.keymap.set('n', '\\g', '<cmd>lua require("fzf-lua").live_grep()<CR>', { silent = true })
 ---{{{2 Oil Settings
 require("oil").setup({
   default_file_explorer = true;

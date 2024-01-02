@@ -11,6 +11,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.initrd.network.enable = true;
   boot.initrd.network.udhcpc.enable = true;
+  boot.supportedFilesystems = ["ntfs"];
 
 # {{{1 Networking
   networking = {

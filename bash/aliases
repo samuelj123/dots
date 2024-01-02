@@ -3,7 +3,7 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-alias gp='cd financeapp/ && nvim'
+alias gp='cd coding/penucia && nvim'
 alias ga='nvim ~/dotfiles/bash/aliases'
 alias gnc='nvim ~/dotfiles/nvim/init2.lua'
 alias gbc='nvim ~/dotfiles/bash/bashrc'
@@ -11,6 +11,7 @@ alias gtc='nvim ~/dotfiles/tmux/tmux.conf'
 alias ggc='nvim ~/dotfiles/configuration.nix'
 alias ghc='nvim ~/.config/home-manager/home.nix'
 alias hs='home-manager switch'
+alias gs='sudo nixos-rebuild switch -I nixos-config=/home/sam/dotfiles/configuration.nix'
 alias ta='echo "Testing Alias"'
 
 # Paths
