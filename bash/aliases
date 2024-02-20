@@ -5,6 +5,7 @@ alias l='ls -CF'
 
 alias gp='cd coding/penucia && nvim'
 alias ga='nvim ~/dotfiles/bash/aliases'
+alias ttb='cd "/mnt/c/Users/esthe/DOCUMENTS/drive E/sam/ttb"'
 alias gnc='nvim ~/dotfiles/nvim/init2.lua'
 alias gbc='nvim ~/dotfiles/bash/bashrc'
 alias gtc='nvim ~/dotfiles/tmux/tmux.conf'
