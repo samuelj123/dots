@@ -44,8 +44,6 @@ vim.keymap.set('n', '<leader>gp', ':cd /mnt/c/Users/esthe/DOCUMENTS/Sam/essentia
 vim.keymap.set('n', '<leader>E', ':Lex<Return>', { silent = true, desc = "[E]xplorer" })
 vim.keymap.set('n', '<leader>w', ':bd<Return>', { silent = true, desc = "[E]xplorer" })
 -- {{{1 Plugin Options
--- {{{2 LspConfig, fidget
-require('fidget').setup({})
 -- {{{2 Catppuccin and Lualine
 require("catppuccin").setup({});
 vim.cmd.colorscheme("catppuccin")
