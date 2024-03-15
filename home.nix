@@ -115,6 +115,9 @@ in
 		"/home/sam/.config/hypr/hyprland.conf".source = /home/sam/dotfiles/hyprland.conf;
 		"/home/sam/.config/nvim/init.lua".source = /home/sam/dotfiles/nvim/init2.lua;
 		"/home/sam/.config/nixpkgs/config.nix".source = /home/sam/dotfiles/nurinstall.nix;
+		# IF I ever install an X System with URXVT terminal
+		#"/home/sam/.config/i3/config".source = /home/sam/dotfiles/i3config;
+		#"/home/sam/.Xresources".source = /home/sam/dotfiles/xresources;
 	};
 
 #{{{1 Session Variables
