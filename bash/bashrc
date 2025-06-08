@@ -91,25 +91,10 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 
 
 # {{{1 Alias definitions.
-if [ -f ~/dotfiles/bash/aliases ]; then
-    . ~/dotfiles/bash/aliases
+if [ -f ~/dots/bash/aliases ]; then
+    . ~/dots/bash/aliases
 fi
-# {{{2 Alert alias
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 #
-# {{{2 Color Support Aliases
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
 # {{{1 Programmable completion features 
 if ! shopt -oq posix; then
     if [ -f /usr/share/bash-completion/bash_completion ]; then
@@ -120,9 +105,14 @@ if ! shopt -oq posix; then
 fi
 
 # {{{1 FZF Stuff
-# export FZF_DEFAULT_COMMAND='find .--hidden --exclude ".git"'
-# export FZF_ALT_C_COMMAND:"find -d --hidden --exclude '.git'"
-# export FZF_ALT_C_OPTS: " --preview 'tree -C {}'"
-# 
+export FZF_DEFAULT_COMMAND='find .--hidden --exclude ".git"'
+export FZF_ALT_C_COMMAND='find -d --hidden --exclude ".git"'
+export FZF_ALT_C_OPTS=" --preview 'tree -C {}'"
+## Set up fzf key bindings and fuzzy completion
+source /usr/share/doc/fzf/examples/key-bindings.bash
+# {{{1 McFly and Zoxide
+eval "$(mcfly init bash)"
+eval "$(zoxide init bash)"
+ 
 # {{{1 Echo Stuff
 echo -e "\e[90m$USER on $(hostname)\e[0m"
