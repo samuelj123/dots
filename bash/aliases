@@ -1,6 +1,7 @@
 # ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
+alias ls='exa --icons -1'
+alias ll='exa --icons --long -1 --header'
+alias la='exa --icons -1 --all'
 alias l='ls -CF'
 
 alias gp='cd coding/penucia && nvim'
